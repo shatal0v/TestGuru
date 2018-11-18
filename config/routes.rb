@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  controller :pages do
-    get :about
-    get :author
-  end
+  get '/about', :to => redirect('/about.html')
+  get '/author', :to => redirect('/author.html')
 end
