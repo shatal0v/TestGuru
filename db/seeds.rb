@@ -21,8 +21,3 @@ answers = Answer.create([
   {body: 'Nmnvc', question_id: questions[2].id}])
 
 users = User.create([{name: 'David'}, {name: 'Bill'}])
-
-passed_tests = PassedTest.create([
-  {user_id: users[0].id, test_id: tests[1].id},
-  {user_id: users[0].id, test_id: tests[2].id},
-  {user_id: users[1].id, test_id: tests[0].id}])
