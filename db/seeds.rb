@@ -10,7 +10,8 @@ tests = Test.create(
    { title: 'Golang', level: 2, category_id: categories[1].id, author_id: users[1].id },
    { title: 'Ruby', level: 1, category_id: categories[1].id, author_id: users[1].id },
    { title: 'Python', level: 2, category_id: categories[1].id, author_id: users[1].id },
-   { title: 'STM32', level: 3, category_id: categories[0].id, author_id: users[0].id }]
+   { title: 'STM32', level: 3, category_id: categories[0].id, author_id: users[0].id },
+   { title: 'STM32', level: 2, category_id: categories[0].id, author_id: users[0].id }]
 )
 
 questions = Question.create(
@@ -21,7 +22,7 @@ questions = Question.create(
    { body: 'STM32 question #1', test_id: tests[4].id }]
 )
 
-answer = Answer.create(
+answers = Answer.create(
   [{ body: 'Answer 1q1', question_id: questions[0].id, correct: false },
    { body: 'Answer 2q1', question_id: questions[0].id, correct: true },
    { body: 'Answer 1q2', question_id: questions[1].id, correct: false },
@@ -34,9 +35,9 @@ answer = Answer.create(
    { body: 'Answer 2q5', question_id: questions[4].id, correct: true }]
 )
 
-testsuser = TestsUser.create(
-  [{ user_id: users[0], test_id: tests[0] },
-   { user_id: users[0], test_id: tests[1] },
-   { user_id: users[1], test_id: tests[2] },
-   { user_id: users[1], test_id: tests[3] }]
+tests_users = TestsUser.create(
+  [{ user_id: users[0].id, test_id: tests[0].id },
+   { user_id: users[0].id, test_id: tests[1].id },
+   { user_id: users[1].id, test_id: tests[2].id },
+   { user_id: users[1].id, test_id: tests[3].id }]
 )
