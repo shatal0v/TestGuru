@@ -13,7 +13,10 @@ class Test < ApplicationRecord
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
-  scope :sort_by_category, -> (category) { joins(:category).
-                                           where(categories: {title: category}).
-                                           order(title: :desc) }
+  scope :categories, -> { joins(:category) }
+  
+  def self.sort_by_category(category)
+    categories.where(categories: {title: category}).
+    pluck(:title).sort.reverse
+  end
 end
