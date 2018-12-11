@@ -1,6 +1,8 @@
 class Answer < ApplicationRecord
-  MAX_ANSWER =4
+  MAX_COUNT =4
   belongs_to :question
+
+  scope :correct, -> { where(correct: true) }
 
   validates :body, presence: true
   validate :validate_max_answers, on: :create
@@ -8,6 +10,6 @@ class Answer < ApplicationRecord
   private
 
   def validate_max_answers
-    errors.add(:question) if question.answers.count >= MAX_ANSWER
+    errors.add(:question) if question.answers.count >= MAX_COUNT
   end
 end
