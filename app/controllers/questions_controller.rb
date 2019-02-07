@@ -1,13 +1,13 @@
 class QuestionsController < ApplicationController
-  before_action :find_test_questions, only: :index
+  before_action :find_test, only: %i[index create]
   before_action :find_question, only: %i[show destroy]
   rescue_from NoMethodError, with: :rescue_with_question_not_found
   rescue_from RuntimeError, with: :rescue_with_question_body_is_empty
 
   def index
     render inline: "
-    <p><%= 'EMPTY TEST' if @questions.empty? %></p>
-    <% @questions.each do |question| %>
+    <p><%= 'EMPTY TEST' if @test.questions.empty? %></p>
+    <% @test.questions.each do |question| %>
       <br><%= question.body %></br>
     <% end %>"
   end
@@ -21,7 +21,6 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @test = Test.find(params[:test_id])
     question = @test.questions.new(question_body)
     if question.save
       redirect_to test_questions_path
@@ -32,7 +31,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    render plain: "Question deleted."
+    render inline: "<p>Question deleted.</p>"
   end
 
   private
@@ -45,8 +44,8 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
-  def find_test_questions
-    @questions = Test.find(params[:test_id]).questions
+  def find_test
+    @test = Test.find(params[:test_id])
   end
 
   def rescue_with_question_not_found
