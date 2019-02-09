@@ -1,4 +1,5 @@
 <p><%= @question.body %></p>
-<p><%= link_to 'Delete', question_path,
-						 method: :delete,
-						 data: { confirm: 'Are you sure?' } %></p>
+<%= render 'back_button' %>
+<%= link_to 'Delete', question_path,
+					  method: :delete,
+					  data: { confirm: 'Are you sure?' } %>

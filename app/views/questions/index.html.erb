@@ -1,0 +1,30 @@
+<h3><%= @test.title %></h3>
+<p><b>Questions: <%= @test.questions.count %></b></p>
+<table width="500">
+	<%= link_to 'Create new question', new_test_question_path %>
+	<td><p><%= 'Empty Test' if @test.questions.empty? %></p></td>
+	<% @test.questions.each do |question| %>
+	  <tr>
+	  	<td><p><%= question.body %></p></td>
+	  	<td>
+	  		<%= link_to 'Show', question_path(question) %> |
+	  		<%= link_to 'Edit', edit_question_path(question) %> |
+	  		<%= link_to 'Delete', question_path(question),
+						 method: :delete,
+						 data: { confirm: 'Are you sure?' } %>
+	  	</td>
+	  </tr>
+	<% end %>
+
+	<tr>
+		<td>
+			<% if @previous_test  %>
+				<%= link_to '<< Prev', test_questions_path(@previous_test) %> |
+			<% end %>
+			<% if @next_test %>
+				<%= link_to 'Next >>', test_questions_path(@next_test)  %>
+			<% end %>
+		</td>
+	</tr>
+</table>
+<%= render 'footer' %>
