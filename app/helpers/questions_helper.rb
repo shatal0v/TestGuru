@@ -1,20 +1,9 @@
 module QuestionsHelper
-  def question_header(action)
-    case action
-    when 'new'
+  def question_header(question)
+    if question.new_record?
       "Create New #{@test.title} Question"
-    when 'edit'
-      "Edit #{@question.test.title} Question"
     else
-      "Testguru"
+      "Edit #{@question.test.title} Question"
     end
-  end
-
-  def year_now
-    Time.now.year
-  end
-
-  def github_url(author, repo)
-    "https://github.com/#{author}/#{repo}"
   end
 end

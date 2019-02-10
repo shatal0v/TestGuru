@@ -5,11 +5,11 @@ class QuestionsController < ApplicationController
   #rescue_from RuntimeError, with: :rescue_with_question_body_is_empty
 
   def index
-    @id = @test.id
-    @number_of_tests = Test.count
-    if @number_of_tests > 0
-      @previous_test = Test.find(@id - 1) if @id > 1 
-      @next_test = Test.find(@id + 1) if @id < @number_of_tests
+    tests = Test.all
+    now_stage_number = tests.index(@test)
+    if tests.size > 0
+      @previous_test = tests[now_stage_number - 1] if now_stage_number > 0
+      @next_test = tests[now_stage_number + 1] if @test != tests.last
     else 
       render plain: 'Empty'
     end
@@ -43,8 +43,9 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    render inline: "<p>Question deleted</p>
-                    <%= render 'back_button' %>"
+    render inline: "
+                    <p>Question deleted</p>
+                    <%= link_to 'Back', test_questions_path(@question.test) %>"
   end
 
   private

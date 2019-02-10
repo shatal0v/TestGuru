@@ -6,7 +6,7 @@
 
 <% if @question.errors.any? %>
 	Error! <% @question.errors.full_messages.each do |msg| %>
-	<%= msg %>
+	  <%= msg %>
 	<% end %>
 <% end %>
-<%= render 'back_button' %>
+<%= link_to 'Back', test_questions_path(@question.test) %>
