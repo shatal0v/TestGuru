@@ -1,2 +1,4 @@
-<% @title = question_header(@question) %>
+<% content_for :special_title do %>
+  <title><%= question_header(@question) %></title>
+<% end %>
 <%= render 'form', resource: @question %>

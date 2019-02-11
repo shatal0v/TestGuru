@@ -5,8 +5,8 @@
 <% end %>
 
 <% if @question.errors.any? %>
-	Error! <% @question.errors.full_messages.each do |msg| %>
-	  <%= msg %>
+  Error! <% @question.errors.full_messages.each do |msg| %>
+    <%= msg %>
 	<% end %>
 <% end %>
-<%= link_to 'Back', test_questions_path(@question.test) %>
+<p><%= link_to 'Back', test_path(@question.test) %></p>
