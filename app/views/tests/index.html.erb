@@ -1,20 +1,7 @@
-<% @tests.each do |test| %>
-<h3><%= test.title %></h3>
-<p><b>Questions: <%= test.questions.count %></b></p>
-<table width="500">
-<%= link_to 'Create new question', new_test_question_path(test) %>
-  <% if test.questions.empty? %>
-    <p>Empty Test</p>
-  <% else %>
-    <% test.questions.each do |question| %>
-      <tr><td><p><%= question.body %></p></td><td>
-      <%= link_to 'Show', question_path(question) %> |
-      <%= link_to 'Edit', edit_question_path(question) %> |
-      <%= link_to 'Delete', question_path(question),
-                            method: :delete,
-                            data: { confirm: 'Are you sure?' } %></td></tr>
-    <% end %>
-  <% end %>
+<% @tests_pages.each do |test| %>
+  <table cellspacing="5">
+  <tr><td><b><%= link_to test.title, test_path(test) %></b></td>
+  <td> questions: <%= test.questions.count %></td></tr>
+  </table>
 <% end %>
-</table>
-<p><%= paginate @tests %></p>
+<p><%= paginate @tests_pages %></p>

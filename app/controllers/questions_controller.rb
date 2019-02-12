@@ -4,10 +4,6 @@ class QuestionsController < ApplicationController
   rescue_from NoMethodError, with: :rescue_with_question_not_found
   rescue_from RuntimeError, with: :rescue_with_question_body_is_empty
 
-  def index
-  
-  end
-
   def show
     
   end
