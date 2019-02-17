@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :tests_pages, only: %i[index show]
+  before_action :tests_pages, only: %i[index]
 
   def index
   end
@@ -7,6 +7,8 @@ class TestsController < ApplicationController
   def show
     @test = Test.find(params[:id])
   end
+
+  private
 
   def tests_pages
     @tests_pages = Test.page(params[:page]).per(3)
