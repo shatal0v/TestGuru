@@ -1,0 +1,7 @@
+<% @tests_pages.each do |test| %>
+  <table cellspacing="5">
+  <tr><td><b><%= link_to test.title, test_path(test) %></b></td>
+  <td> questions: <%= test.questions.count %></td></tr>
+  </table>
+<% end %>
+<p><%= paginate @tests_pages %></p>

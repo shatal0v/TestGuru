@@ -1,37 +1,43 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: %i[index create]
-  before_action :find_question, only: %i[show destroy]
+  before_action :find_test, only: %i[index create new]
+  before_action :find_question, only: %i[show destroy edit update]
   rescue_from NoMethodError, with: :rescue_with_question_not_found
   rescue_from RuntimeError, with: :rescue_with_question_body_is_empty
 
-  def index
-    render inline: "
-    <p><%= 'EMPTY TEST' if @test.questions.empty? %></p>
-    <% @test.questions.each do |question| %>
-      <br><%= question.body %></br>
-    <% end %>"
-  end
-
   def show
-    @question
+    
   end
 
   def new
-
+    @question = @test.questions.new
   end
 
   def create
-    question = @test.questions.new(question_body)
-    if question.save
-      redirect_to test_questions_path
+    @question = @test.questions.new(question_body)
+    if @question.save
+      redirect_to test_path(@test)
     else
-      render plain: "Not saved"
+      render :new
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @question.update(question_body)
+      redirect_to question_path
+    else
+      render :edit
     end
   end
 
   def destroy
     @question.destroy
-    render inline: "<p>Question deleted.</p>"
+    render inline: "
+                    <p>Question deleted</p>
+                    <%= link_to 'Back', test_path(@question.test) %>"
   end
 
   private
