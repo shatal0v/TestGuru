@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= yield :special_title %>
     <title>Testguru</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,5 +12,6 @@
 
   <body>
     <%= yield %>
+    <%= render "footer" %>
   </body>
 </html>
