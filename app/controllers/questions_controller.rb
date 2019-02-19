@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.new(question_body)
     if @question.save
-      redirect_to test_path(@test)
+      redirect_to @question, notice: 'Question was successfully created.'
     else
       render :new
     end
@@ -35,9 +35,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    render inline: "
-                    <p>Question deleted</p>
-                    <%= link_to 'Back', test_path(@question.test) %>"
+    redirect_to @question.test
   end
 
   private
