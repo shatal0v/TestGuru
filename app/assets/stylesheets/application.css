@@ -5,7 +5,14 @@
   height:100px;
   width:100%;
   margin-top: 100px;
-  background-color: #f1f1f1;
+  background-color:#f1f1f1;
   padding: 10px;
   text-align: center;
+}
+.green {
+  color:#008000;
+}
+
+.red {
+  color:#FF0000;
 }
