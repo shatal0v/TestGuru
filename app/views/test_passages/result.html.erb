@@ -1,1 +1,11 @@
 <h1>The <%= @test_passage.test.title %> Test Completed!</h1>
+
+<% if @test_passage.test_passed? %>
+  <h2>You Pass The Test!</h2>
+  <h1 style="color: #008000"><%= @test_passage.percent.round(2) %>%</h1>
+<% else %>
+  <h2>You Fail The Test!</h2>
+  <h1 style="color: #FF0000"><%= @test_passage.percent.round(2) %>%</h1>
+<% end %>
+
+<p><%= link_to 'Main menu', tests_path %></p>
