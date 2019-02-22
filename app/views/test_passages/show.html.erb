@@ -3,11 +3,10 @@
   <%= @test_passage.current_question.body %>
 </b>
 
-<% @test_passage.question_ids.each_with_index do |id, index| %>
-    <% if id == @test_passage.current_question.id %>
-      <p>Question <%= index + 1 %> of <%= @test_passage.test.questions.count %></p>
-    <% end %>
-<% end %>
+<p>
+  Question <%= @test_passage.current_question_number %> of 
+  <%= @test_passage.test.questions.count %>
+</p>
 
 <%= form_with url: test_passage_path(@test_passage),
               local: true, method: :put do |form| %>

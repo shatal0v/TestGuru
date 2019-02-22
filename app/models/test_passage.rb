@@ -4,7 +4,7 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :before_validation_set_first_question, on: %i[create update]
+  before_validation :before_validation_set_first_question
 
   def completed?
     current_question.nil?
@@ -19,7 +19,7 @@ class TestPassage < ApplicationRecord
   end
 
   def test_passed?
-    self.correct_questions >= (test.questions.count * TEST_PASSED_VALUE / 100.0)
+    percent >= TEST_PASSED_VALUE
   end
 
   def percent
@@ -27,8 +27,9 @@ class TestPassage < ApplicationRecord
     percent.round(2)
   end
 
-  def question_ids
-    test.questions.order(:id).pluck(:id)
+  def current_question_number
+    ids = test.questions.order(:id).pluck(:id)
+    ids.index(self.current_question.id) + 1
   end
 
   private
