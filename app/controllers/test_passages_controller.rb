@@ -1,5 +1,6 @@
 class TestPassagesController < ApplicationController
 
+  before_action :redirect_to_login, unless: :logged_in?
   before_action :set_test_passage, only: %i[show update result]
 
   def show

@@ -1,3 +1,9 @@
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |msg| %>
+  <%= msg %>
+  <% end %>
+<% end %>
+
 <%= form_with model: @user, local: true do |form| %>
   <p>
     <%= form.label :name %><br>

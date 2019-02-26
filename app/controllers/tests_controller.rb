@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
   
+  before_action :redirect_to_login, unless: :logged_in?
   before_action :authenticate_user!
   before_action :tests_pages, only: %i[index]
   before_action :find_test, only: %i[show start]
@@ -29,7 +30,7 @@ class TestsController < ApplicationController
   end
 
   def set_user
-    @user = User.first
+    @user = current_user
   end
 
 end
