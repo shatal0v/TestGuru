@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to cookies[:last_path]
+      redirect_to cookies[:last_path] || root_path
     else
       flash.now[:alert] = flash_alert
       render :new
