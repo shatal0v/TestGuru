@@ -11,20 +11,22 @@
   </head>
 
   <body>
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <ul id="nav">
         <li><%= link_to 'TestGuru ', tests_path %></li>
-        <li><%= link_to 'Logout', logout_path %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
       </ul>
-      <b>Welcome, <%= current_user.name %>, Guru!</b>
+      <b>Welcome, <%= current_user.email %>, Guru!</b>
     <% else %>
       <ul id="nav">
-        <li><%= link_to 'Registration ', users_new_path %></li>
-        <li><%= link_to 'Login', login_path %></li>
+        <li><%= link_to 'Registration ', new_user_registration_path %></li>
+        <li><%= link_to 'Login', new_user_session_path %></li>
       </ul>
     <% end %>
 
+    <p><%= render 'shared/flash' %></p>
+    <%= console %>
     <%= yield %>
-    <%= render "shared/footer" %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

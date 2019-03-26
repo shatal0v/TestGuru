@@ -1,15 +1,11 @@
 class TestsController < ApplicationController
   
-  before_action :authenticate_user!, unless: :logged_in?
-  before_action :tests_pages, only: %i[index]
-  before_action :find_test, only: %i[show start]
+  before_action :authenticate_user!
+  before_action :tests_pages, only: :index
+  before_action :find_test, only: :start
 
   def index
 
-  end
-
-  def show
-    
   end
 
   def start

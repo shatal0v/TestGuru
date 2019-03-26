@@ -1,0 +1,27 @@
+<%= form_with model: [:admin, @test], local: true do |form| %>
+  
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, id: :test_title %>
+  </p>
+
+  <p>
+    <%= form.label :category %><br>
+    <%= form.select :category, Category.pluck(:title) %>
+  </p>
+
+  <p>
+    <%= form.label :level %><br>
+    <%= form.select :level, [1, 2, 3, 4, 5] %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<%= console %>
+  <% if @test.errors.any? %>
+    Error! <% @test.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  <% end %> 
+<% end %>
