@@ -52,7 +52,7 @@
 }
 
 .flash.notice {
-  border-color: #ef2727
+  border-color: #00FF00
 }
 
 .nav.user {
@@ -90,3 +90,7 @@ a {
   color: #ffffff;
 }
 
+.body {
+  height:650px;
+  overflow: auto;
+}

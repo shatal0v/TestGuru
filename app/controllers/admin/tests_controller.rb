@@ -16,8 +16,9 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def create
-    @test = Test.new(test_params)
-    @test.category_id = Category.where(title: params[:test][:category]).ids[0]
+    category = Category.find_by(title: params[:test][:category])
+    
+    @test = category.tests.new(test_params)
     
     if @test.save
       redirect_to admin_test_path(@test), notice: 'Test was successfully created.'

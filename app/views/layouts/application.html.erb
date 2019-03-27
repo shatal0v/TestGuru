@@ -10,13 +10,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="body">
     <% if user_signed_in? %>
       <ul id="nav">
         <li><%= link_to 'TestGuru ', tests_path %></li>
+        <li><%= link_to current_user.email %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
       </ul>
-      <b>Welcome, <%= current_user.email %>, Guru!</b>
     <% else %>
       <ul id="nav">
         <li><%= link_to 'Registration ', new_user_registration_path %></li>
@@ -25,8 +25,8 @@
     <% end %>
 
     <p><%= render 'shared/flash' %></p>
-    <%= console %>
     <%= yield %>
-    <%= render 'shared/footer' %>
+    <p><%= render 'shared/footer' %></p>
+    <%= console %>
   </body>
 </html>
