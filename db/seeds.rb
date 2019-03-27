@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 categories = Category.create([{ title: :embedded }, { title: :backend }])
 
 users = User.create(

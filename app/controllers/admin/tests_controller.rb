@@ -1,15 +1,12 @@
+# frozen_string_literal: true
+
 class Admin::TestsController < Admin::BaseController
-  
   before_action :tests_pages, only: :index
   before_action :find_test, only: %i[show start destroy]
 
-  def index
+  def index; end
 
-  end
-
-  def show
-    
-  end
+  def show; end
 
   def new
     @test = Test.new
@@ -17,9 +14,9 @@ class Admin::TestsController < Admin::BaseController
 
   def create
     category = Category.find_by(title: params[:test][:category])
-    
+
     @test = category.tests.new(test_params)
-    
+
     if @test.save
       redirect_to [:admin, @test], notice: t('.success')
     else
@@ -50,5 +47,4 @@ class Admin::TestsController < Admin::BaseController
   def test_params
     params.require(:test).permit(:title, :level)
   end
-
 end

@@ -1,14 +1,13 @@
+# frozen_string_literal: true
+
 class Admin::QuestionsController < Admin::BaseController
-  
   before_action :authenticate_user!
   before_action :find_test, only: %i[index create new]
   before_action :find_question, only: %i[show destroy edit update]
-  #rescue_from NoMethodError, with: :rescue_with_question_not_found
-  #rescue_from RuntimeError, with: :rescue_with_question_body_is_empty
+  # rescue_from NoMethodError, with: :rescue_with_question_not_found
+  # rescue_from RuntimeError, with: :rescue_with_question_body_is_empty
 
-  def show
-    
-  end
+  def show; end
 
   def new
     @question = @test.questions.new
@@ -16,7 +15,7 @@ class Admin::QuestionsController < Admin::BaseController
 
   def create
     @question = @test.questions.new(question_body)
-    
+
     if @question.save
       redirect_to admin_question_path(@question), notice: 'Question was successfully created.'
     else
@@ -24,9 +23,7 @@ class Admin::QuestionsController < Admin::BaseController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     if @question.update(question_body)
@@ -56,7 +53,7 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def rescue_with_question_not_found
-    render plain: "Question not found"
+    render plain: 'Question not found'
   end
 
   def rescue_with_question_body_is_empty
