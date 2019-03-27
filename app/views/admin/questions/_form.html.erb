@@ -1,0 +1,12 @@
+<p><%= form_with model: resource, local: true do |f| %></p>
+	<p><%= f.label :question_body, "Enter question:" %></p>
+	<%= f.text_field :body, id: :question_id %>
+	<p><%= f.submit "Create" %></p>
+<% end %>
+
+<% if @question.errors.any? %>
+  Error! <% @question.errors.full_messages.each do |msg| %>
+    <%= msg %>
+	<% end %>
+<% end %>
+<p><%= link_to 'Back', admin_test_path(@question.test) %></p>

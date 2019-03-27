@@ -1,9 +1,16 @@
 class User < ApplicationRecord
+  
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable,
+         :trackable,
+         :confirmable
 
   has_many :test_passages
   has_many :tests, through: :test_passages
   has_many :created_tests, class_name: 'Test', foreign_key: :author_id
-  has_secure_password
 
   validates :email, presence: true, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
 
@@ -13,6 +20,10 @@ class User < ApplicationRecord
 
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test_id: test.id)
+  end
+
+  def admin?
+    self.type == 'Admin' ? true : false
   end
 
 end

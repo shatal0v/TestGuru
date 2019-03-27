@@ -1,0 +1,11 @@
+<h3><%= @test.title %></h3>
+<p><b>Questions: <%= @test.questions.count %></b></p>
+<table width="500">
+<%= link_to 'Create new question', new_admin_test_question_path(@test) %>
+<% if @test.questions.empty? %>
+  <p>Empty Test</p>
+<% else %>
+  <%= render partial: 'question', collection: @test.questions %>
+<% end %>
+</table>
+<p><%= link_to 'Main menu', admin_tests_path %></p>

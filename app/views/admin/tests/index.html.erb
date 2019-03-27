@@ -1,9 +1,9 @@
 <h1>Tests</h1>
+<p><%= link_to 'New test', new_admin_test_path %></p>
 <% @tests_pages.each do |test| %>
   <table>
     <tr>
-      <td><b><%= test.title %></b></td>
-      <td><%= button_to 'Start', start_test_path(test) %></td>
+      <td><%= link_to test.title, admin_test_path(test) %></td>
     </tr>
   </table>
 <% end %>

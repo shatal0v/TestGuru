@@ -1,0 +1,15 @@
+<h1><%= @question.test.title %> Question</h1>
+
+<p><%= @question.body %></p>
+
+<h3>Answers</h3>
+<%= link_to 'New answer', new_admin_question_answer_path(@question) %>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
+
+<%= link_to 'Back', admin_test_path(@question.test) %>
+<%= link_to 'Delete', admin_question_path,
+					  method: :delete,
+					  data: { confirm: 'Are you sure?' } %>
