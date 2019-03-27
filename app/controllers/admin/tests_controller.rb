@@ -1,7 +1,7 @@
 class Admin::TestsController < Admin::BaseController
   
   before_action :tests_pages, only: :index
-  before_action :find_test, only: %i[show start]
+  before_action :find_test, only: %i[show start destroy]
 
   def index
 
@@ -21,10 +21,15 @@ class Admin::TestsController < Admin::BaseController
     @test = category.tests.new(test_params)
     
     if @test.save
-      redirect_to admin_test_path(@test), notice: 'Test was successfully created.'
+      redirect_to [:admin, @test], notice: t('.success')
     else
       render :new
     end
+  end
+
+  def destroy
+    @test.destroy
+    redirect_to admin_tests_path
   end
 
   def start

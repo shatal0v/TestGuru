@@ -27,7 +27,7 @@ class Devise::SessionsController < DeviseController
       respond_with resource, location: after_sign_in_path_for(resource)
     end
 
-    flash[:notice] = "Hello, #{current_user.first_name}!"
+    flash[:notice] = "#{t('.hello')}, #{current_user.first_name}!"
   end
 
   # DELETE /resource/sign_out

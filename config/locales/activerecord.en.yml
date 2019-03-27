@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      test: "Test"
+    
+    attributes:
+      test:
+        title: "Title"
+        level: "Level"
+        category: "Category"

@@ -15,18 +15,17 @@
       <ul id="nav">
         <li><%= link_to 'TestGuru ', tests_path %></li>
         <li><%= link_to current_user.email %></li>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to t('.logout'), destroy_user_session_path, method: :delete %></li>
       </ul>
     <% else %>
       <ul id="nav">
-        <li><%= link_to 'Registration ', new_user_registration_path %></li>
-        <li><%= link_to 'Login', new_user_session_path %></li>
+        <li><%= link_to t('.registration'), new_user_registration_path %></li>
+        <li><%= link_to t('.login'), new_user_session_path %></li>
       </ul>
     <% end %>
 
     <p><%= render 'shared/flash' %></p>
     <%= yield %>
     <p><%= render 'shared/footer' %></p>
-    <%= console %>
   </body>
 </html>

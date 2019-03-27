@@ -267,3 +267,51 @@ ru:
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: вечера
+  tests:
+    index:
+      header: "Доступные Тесты"
+      start: "Старт"
+  admin:
+    tests:
+      create:
+        success: "Тест успешно создан."
+      index:
+        header: "Доступные Тесты"
+        new_test: "Создать Тест"
+        delete: "Удалить"
+      new:
+        new_test: "Новый тест"
+  devise:
+    sessions:
+      create:
+        hello: "Привет"
+  layouts:
+    application:
+      registration: "Регистрация"
+      logout: "Выйти"
+      login: "Войти"
+  helpers:
+    submit:
+      test:
+        create: "Создать Тест"
+        update: "Обновить Тест"
+    label:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category: "Категория"
+  test_passages:
+    result:
+      header: "Тест %{title} успешно завершён!"
+      fail: "Вы не прошли тест!"
+      pass: "Вы успешно прошли тест!"
+      main_menu: "Главная"
+    show:
+      passing: "Прохождение"
+      question: "Вопрос"
+      of: "из"
+      next: "Далее"
+  tests_mailer:
+    completed_test:
+      subject: "Вы успешно завершили тест на TestGuru!"
+      

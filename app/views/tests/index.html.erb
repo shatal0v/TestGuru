@@ -1,9 +1,9 @@
-<h1>Tests</h1>
+<h1><%= t('tests.index.header') %></h1>
 <% @tests_pages.each do |test| %>
   <table>
     <tr>
       <td><b><%= test.title %></b></td>
-      <td><%= button_to 'Start', start_test_path(test) %></td>
+      <td><%= button_to t('.start'), start_test_path(test) %></td>
     </tr>
   </table>
 <% end %>
