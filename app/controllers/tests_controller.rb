@@ -1,12 +1,11 @@
+# frozen_string_literal: true
+
 class TestsController < ApplicationController
-  
   before_action :authenticate_user!
   before_action :tests_pages, only: :index
   before_action :find_test, only: :start
 
-  def index
-
-  end
+  def index; end
 
   def start
     current_user.tests.push(@test)
@@ -22,5 +21,4 @@ class TestsController < ApplicationController
   def find_test
     @test = Test.find(params[:id])
   end
-
 end

@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -23,7 +24,6 @@ class User < ApplicationRecord
   end
 
   def admin?
-    self.type == 'Admin' ? true : false
+    type == 'Admin'
   end
-
 end

@@ -1,12 +1,16 @@
-<p><%= form_with model: resource, local: true do |f| %></p>
-	<p><%= f.label :question_body, "Enter question:" %></p>
-	<%= f.text_field :body, id: :question_id %>
-	<p><%= f.submit "Create" %></p>
+<%= form_with model: resource, local: true do |f| %>
+	
+  <% if @question.errors.any? %>
+    <% @question.errors.full_messages.each do |msg| %>
+      <div class="flash alert"><%= msg %></div><br>
+    <% end %>
 <% end %>
 
-<% if @question.errors.any? %>
-  Error! <% @question.errors.full_messages.each do |msg| %>
-    <%= msg %>
-	<% end %>
+  <p><%= f.label :question_body, id: :question %></p>
+	
+  <p><%= f.text_field :body, id: :question_id %></p>
+	
+  <p><%= f.submit %></p>
 <% end %>
+
 <p><%= link_to 'Back', admin_test_path(@question.test) %></p>

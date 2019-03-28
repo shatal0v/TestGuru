@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddNullConstraint < ActiveRecord::Migration[5.2]
   def change
     change_column_null(:tests, :title, false)

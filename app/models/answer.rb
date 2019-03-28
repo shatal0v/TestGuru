@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Answer < ApplicationRecord
   MAX_COUNT = 4
   belongs_to :question

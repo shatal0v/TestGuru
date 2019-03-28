@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Test < ApplicationRecord
   belongs_to :category
   has_many :questions
@@ -13,9 +15,11 @@ class Test < ApplicationRecord
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
-  scope :by_category, -> (category) { joins(:category)
-                                     .where(categories: {title: category}) }
-  
+  scope :by_category, ->(category) {
+                        joins(:category)
+                          .where(categories: { title: category })
+                      }
+
   def self.sort_by_category(category)
     Test.by_category(category).order(title: :desc).pluck(:title)
   end

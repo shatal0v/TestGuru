@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestPassage < ApplicationRecord
   TEST_PASSED_VALUE = 85
   belongs_to :user
@@ -11,9 +13,7 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if correct_answer?(answer_ids)
 
     save!
   end
@@ -29,13 +29,13 @@ class TestPassage < ApplicationRecord
 
   def current_question_number
     ids = test.questions.order(:id).pluck(:id)
-    ids.index(self.current_question.id) + 1
+    ids.index(current_question.id) + 1
   end
 
   private
 
   def before_validation_set_first_question
-    if self.current_question.nil?
+    if current_question.nil?
       self.current_question = test.questions.first if test.present?
     else
       self.current_question = next_question

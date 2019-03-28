@@ -1,5 +1,11 @@
 <%= form_with model: [:admin, @question, @answer], local: true do |form| %>
   
+  <% if @answer.errors.any? %>
+    <% @answer.errors.full_messages.each do |msg| %>
+      <div class="flash alert"><%= msg %></div>
+    <% end %>
+  <% end %>
+
   <p>
     <%= form.label :body %><br>
     <%= form.text_area :body, id: :answer_body, rows: 7, cols: 60 %>
@@ -13,10 +19,4 @@
   <p>
     <%= form.submit %>
   </p>
-
-  <% if @answer.errors.any? %>
-    Error! <% @answer.errors.full_messages.each do |msg| %>
-      <%= msg %>
-    <% end %>
-  <% end %> 
 <% end %>

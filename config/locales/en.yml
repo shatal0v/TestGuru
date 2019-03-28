@@ -31,3 +31,51 @@
 
 en:
   hello: "Hello world"
+  tests:
+    index:
+      header: "Tricky Tests"
+      start: "Start"
+  admin:
+    tests:
+      create:
+        success: "Test was successfully created."
+      index:
+        header: "Tricky Tests"
+        new_test: "Create Test"
+        delete: "Delete"
+      new:
+        new_test: "New test"
+  devise:
+    sessions:
+      create:
+        hello: "Hello"
+  layouts:
+    application:
+      registration: "Registration"
+      logout: "Logout"
+      login: "Login"
+  helpers:
+    submit:
+      test:
+        create: "Create Test"
+        update: "Update Test"
+    label:
+      test:
+        title: "Title"
+        level: "Level"
+        category: "Category"
+  test_passages:
+    result:
+      header: "Test %{title} successfully completed!"
+      fail: "You fail the test!"
+      pass: "You pass the test!"
+      main_menu: "Main"
+    show:
+      passing: "Passing the"
+      question: "Question"
+      of: "of"
+      next: "Next"
+  tests_mailer:
+    completed_test:
+      subject: "You just completed the TestGuru test!"
+      

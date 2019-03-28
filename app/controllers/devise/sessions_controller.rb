@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Devise::SessionsController < DeviseController
-  prepend_before_action :require_no_authentication, only: [:new, :create]
+  prepend_before_action :require_no_authentication, only: %i[new create]
   prepend_before_action :allow_params_authentication!, only: :create
   prepend_before_action :verify_signed_out_user, only: :destroy
-  prepend_before_action(only: [:create, :destroy]) { request.env["devise.skip_timeout"] = true }
+  prepend_before_action(only: %i[create destroy]) { request.env['devise.skip_timeout'] = true }
 
   # GET /resource/sign_in
   def new
@@ -27,7 +27,7 @@ class Devise::SessionsController < DeviseController
       respond_with resource, location: after_sign_in_path_for(resource)
     end
 
-    flash[:notice] = "Hello, #{current_user.first_name}!"
+    flash[:notice] = "#{t('.hello')}, #{current_user.first_name}!"
   end
 
   # DELETE /resource/sign_out
