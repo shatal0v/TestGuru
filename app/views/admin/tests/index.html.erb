@@ -1,13 +1,36 @@
-<h1><%= t('.header') %></h1>
-<p><%= link_to t('.new_test'), new_admin_test_path %></p>
-<% @tests_pages.each do |test| %>
-  <table>
-    <tr>
-      <td><%= link_to test.title, admin_test_path(test) %></td>
-      <td><%= button_to t('.delete'), admin_test_path(test),
-                                  method: :delete,
-                                  data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  </table>
-<% end %>
-<p><%= paginate @tests_pages %></p>
+<div class="container">
+  <div class="row">
+    <div class="mt-2 mb-5">
+      <h1><%= t('.header') %></h1>
+      <%= link_to t('.new_test'), new_admin_test_path %>
+    </div>
+
+    <table class="table table-bordered">
+      <% @tests_pages.each do |test| %>
+
+        <tr>
+          <td>
+              <h4><%= link_to test.title, admin_test_path(test) %></h4>
+          </td>
+          
+          <td class="col-1">
+            <%= button_to t('.edit'), edit_admin_test_path(test), class: "btn btn-secondary"%>
+          </td>
+          
+          <td class="col-1">
+            <%= button_to t('.delete'), admin_test_path(test),
+                                        method: :delete,
+                                        data: { confirm: 'Are you sure?' },
+                                        class: "btn btn-danger" %>
+          </td>
+
+        </tr>
+
+      <% end %>
+    </table>
+  </div>
+   
+   <nav class="mt-5"> 
+    <%= paginate @tests_pages %>
+   </nav>   
+</div>
