@@ -1,7 +1,6 @@
 <% flash.each do |key, message| %>
-  <% if flash[:alert] %>
-    <div class="alert alert-danger"><%= message %></div>
-  <% elsif flash[:notice] %>
-    <div class="alert alert-primary"><%= message %></div>
-  <% end %>
+  <div class="<%=bootstrap_alert_css_class(key)%>">
+    <%= message %>
+  </div>
+  <% console %>
 <% end %>
