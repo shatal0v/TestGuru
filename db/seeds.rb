@@ -3,8 +3,8 @@
 categories = Category.create([{ title: :embedded }, { title: :backend }])
 
 users = User.create(
-  [{ name: 'Richard', email: 'first@mail.com' },
-   { name: 'Stephen', email: 'second@mail.com' }]
+  [{ first_name: 'Richard', last_name: 'Cory', email: 'first@mail.com' },
+   { first_name: 'Stephen', last_name: 'Jones', email: 'second@mail.com' }]
 )
 
 tests = Test.create(

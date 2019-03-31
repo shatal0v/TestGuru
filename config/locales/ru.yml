@@ -279,17 +279,19 @@ ru:
         header: "Доступные Тесты"
         new_test: "Создать Тест"
         delete: "Удалить"
+        edit: "Изменить"
       new:
         new_test: "Новый тест"
   devise:
     sessions:
       create:
         hello: "Привет"
-  layouts:
-    application:
+  shared:
+    nav:
       registration: "Регистрация"
       logout: "Выйти"
       login: "Войти"
+      welcome: "Добро пожаловать"
   helpers:
     submit:
       test:
@@ -314,3 +316,9 @@ ru:
   tests_mailer:
     completed_test:
       subject: "Вы успешно завершили тест на TestGuru!"
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: "Последняя &raquo;"
+      previous: "&lsaquo; Пред"
+      next: "След &rsaquo;"

@@ -43,17 +43,19 @@ en:
         header: "Tricky Tests"
         new_test: "Create Test"
         delete: "Delete"
+        edit: "Edit"
       new:
         new_test: "New test"
   devise:
     sessions:
       create:
         hello: "Hello"
-  layouts:
-    application:
+  shared:
+    nav:
       registration: "Registration"
       logout: "Logout"
       login: "Login"
+      welcome: "Welcome"
   helpers:
     submit:
       test:
@@ -78,4 +80,10 @@ en:
   tests_mailer:
     completed_test:
       subject: "You just completed the TestGuru test!"
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
       

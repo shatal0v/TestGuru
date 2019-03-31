@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= yield :special_title %>
     <title>Testguru</title>
     <%= csrf_meta_tags %>
@@ -11,21 +14,14 @@
   </head>
 
   <body class="body">
-    <% if user_signed_in? %>
-      <ul id="nav">
-        <li><%= link_to 'TestGuru ', tests_path %></li>
-        <li><%= link_to current_user.email %></li>
-        <li><%= link_to t('.logout'), destroy_user_session_path, method: :delete %></li>
-      </ul>
-    <% else %>
-      <ul id="nav">
-        <li><%= link_to t('.registration'), new_user_registration_path %></li>
-        <li><%= link_to t('.login'), new_user_session_path %></li>
-      </ul>
-    <% end %>
+    <%= render 'shared/nav' %>
 
-    <p><%= render 'shared/flash' %></p>
+  <div class="container">
+    <div class="justify-content-end mt-5"><%= render 'shared/flash' %></div>
     <%= yield %>
     <p><%= render 'shared/footer' %></p>
+
+  </div>
+
   </body>
 </html>
