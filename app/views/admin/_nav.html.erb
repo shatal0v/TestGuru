@@ -1,6 +1,8 @@
 <ul class="nav bg-dark">
   <li class="nav-item">
-    <a class="nav-link disabled" href="#"><b>ADMIN PANEL</b></a>
+    <b>  
+      <%= link_to 'ADMIN PANEL', admin_tests_path, class: "nav-link" %>
+    </b>
   </li>
   <li class="nav-item">
     <%= link_to 'TestGuru', tests_path, class: "nav-link active" %>
