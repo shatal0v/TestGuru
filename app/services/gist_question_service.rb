@@ -1,5 +1,5 @@
 class GistQuestionService
-  
+
   def initialize(question, client: nil)
     @question = question
     @test = @question.test
@@ -10,7 +10,7 @@ class GistQuestionService
     @client.create_gist(gist_params)
   end
 
-  def response
+  def client_last_response 
     @client.last_response
   end
 
@@ -18,7 +18,7 @@ class GistQuestionService
 
   def gist_params
     {
-      description: "A question about #{@test.title} from TestGuru",
+      description: "#{I18n.t('.about')} #{@test.title} #{I18n.t('.from')} TestGuru",
       files: {
         "test-guru-question.txt" => {
           content: gist_content

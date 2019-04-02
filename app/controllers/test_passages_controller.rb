@@ -3,6 +3,7 @@
 class TestPassagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update result gist]
+  helper_method :client_last_response
 
   def show; end
 
@@ -20,16 +21,22 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
-    gist = Gist.create(question_id: @test_passage.current_question_id, url: result[:url], user_id: @test_passage.user_id)
+    service = GistQuestionService.new(@test_passage.current_question)
+    result = service.call
+    
+    if service.client_last_response
+      gist = Gist.create(question_id: @test_passage.current_question_id, url: result[:url], user_id: @test_passage.user_id)
 
-    flash_options = if result.is_a?(Sawyer::Resource)
-      { notice: "#{t('.success')} #{result[:html_url]}" }
+      flash_options = { notice: "#{t('.success')} #{result[:html_url]}" }
     else
-      { alert: t('.failure') }
+      flash_options = { alert: t('.failure') }
     end
 
-     redirect_to @test_passage, flash_options
+    redirect_to @test_passage, flash_options
+  end
+
+  def client_last_response
+    @client_last_response
   end
 
   private
