@@ -9,7 +9,6 @@
   <%= render @question.answers %>
 </ol>
 
-<%= link_to 'Back', admin_test_path(@question.test) %>
 <%= link_to 'Delete', admin_question_path,
 					  method: :delete,
 					  data: { confirm: 'Are you sure?' } %>

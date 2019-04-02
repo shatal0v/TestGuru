@@ -72,6 +72,10 @@ en:
       fail: "You fail the test!"
       pass: "You pass the test!"
       main_menu: "Main"
+    gist:
+      success: "Gist was successfully created!"
+      failure: "An error occirred while saving gist"
+      follow: "Follow"
     show:
       passing: "Passing the"
       question: "Question"
@@ -86,4 +90,6 @@ en:
       last: "Last &raquo;"
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
+  about: "A question about"
+  from: "from site"
       

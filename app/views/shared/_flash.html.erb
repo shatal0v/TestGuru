@@ -1,6 +1,12 @@
 <% flash.each do |key, message| %>
   <div class="<%=bootstrap_alert_css_class(key)%>">
-    <%= message %>
+    <% if message.include?('http') %>
+      <% arr = message.split %>
+      <% link = arr.select {|w| w.start_with?('http')}[0] %>
+      <% domain_name = link.split('/')[2] %>
+      <%= message.remove(link).strip %> <a href="<%= link %>" target="_blank"><%= domain_name %></a>
+    <% else %>
+      <%= message %>
+    <% end %>
   </div>
-  <% console %>
 <% end %>

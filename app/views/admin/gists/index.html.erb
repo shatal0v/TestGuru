@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="mt-2 mb-5">
+
+      <table class="table table-bordered">
+        <% @gists.each do |gist| %>
+        <tr>
+          
+          <td>
+            <%= link_to gist.question.body, admin_question_path(gist.question) %>
+          </td>
+          
+          <td class="col-1">
+            <%= link_to gist.url[0..25] + '...', gist.url%>
+          </td>
+          
+          <td class="col-1">
+            <%= gist.user.email %>
+          </td>
+          
+          <td class="col-1">
+            <%= gist.created_at.to_date %>
+          </td>
+
+        </tr>
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+</div>
