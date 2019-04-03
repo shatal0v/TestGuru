@@ -23,7 +23,7 @@ class TestPassagesController < ApplicationController
   def gist
     service = GistQuestionService.new(@test_passage.current_question)
     result = service.call
-    
+
     if service.client_last_response
       gist = Gist.create(question_id: @test_passage.current_question_id, url: result[:url], user_id: @test_passage.user_id)
 
@@ -35,9 +35,7 @@ class TestPassagesController < ApplicationController
     redirect_to @test_passage, flash_options
   end
 
-  def client_last_response
-    @client_last_response
-  end
+  attr_reader :client_last_response
 
   private
 

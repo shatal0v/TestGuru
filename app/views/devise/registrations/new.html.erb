@@ -18,12 +18,14 @@
 
           <p>
             <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "password" %>
           </p>
 
           <p>
             <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "password_confirmation" %>
+            <%= octicon 'check', class: "text-success hide" %>
+            <%= octicon 'x', class: "text-danger hide" %>
           </p>
 
           <p>
