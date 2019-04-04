@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: %i[development test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use sqlite3 as the database for Active Record
@@ -33,15 +33,15 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
-
 gem 'devise'
 
 # UI
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'octicons_helper'
 
-#NETWORKING
-#gem 'faraday'
+# NETWORKING
+# gem 'faraday'
 gem 'octokit'
 
 gem 'rails-i18n'

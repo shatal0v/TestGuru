@@ -4,6 +4,12 @@
       <h1><%= t('tests.index.header') %></h1>
     </div>
     <table class="table table-bordered">
+      <th class="sort-by-title pointer">
+        Title
+        <%= octicon 'arrow-up', class: "text-success hide" %>
+        <%= octicon 'arrow-down', class: "text-success hide" %>
+      </th>
+      <th colspan="2">Action</th>
       <% @tests_pages.each do |test| %>
 
         <tr>

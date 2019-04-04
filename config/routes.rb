@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'gists/index'
     resources :tests do
+      post :edit
       resources :questions, shallow: true, except: :index do
         resources :answers, shallow: true, except: :index
       end

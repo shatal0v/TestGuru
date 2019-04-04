@@ -16,12 +16,11 @@
   <body class="body">
     <%= render 'shared/nav' %>
 
-  <div class="justify-content-end"><%= render 'shared/flash' %></div>
   
   <div class="container">
+    <%= render 'shared/flash' %>
     <%= yield %>
     <p><%= render 'shared/footer' %></p>
-  <% console %>
   </div>
 
   </body>

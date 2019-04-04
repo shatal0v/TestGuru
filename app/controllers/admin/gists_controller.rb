@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::GistsController < Admin::BaseController
   before_action :authenticate_user!
 

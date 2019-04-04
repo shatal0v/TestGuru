@@ -15,7 +15,7 @@ class TestsController < ApplicationController
   private
 
   def tests_pages
-    @tests_pages = Test.page(params[:page]).per(3)
+    @tests_pages = Test.page(params[:page]).per(6)
   end
 
   def find_test

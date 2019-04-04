@@ -2,7 +2,7 @@
 
 class Admin::TestsController < Admin::BaseController
   before_action :tests_pages, only: :index
-  before_action :find_test, only: %i[show start destroy]
+  before_action :find_test, only: %i[show start edit update destroy]
 
   def index; end
 
@@ -24,6 +24,16 @@ class Admin::TestsController < Admin::BaseController
     end
   end
 
+  def edit; end
+
+  def update
+    if @test.update(test_params)
+      redirect_to admin_test_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @test.destroy
     redirect_to admin_tests_path
@@ -37,11 +47,15 @@ class Admin::TestsController < Admin::BaseController
   private
 
   def tests_pages
-    @tests_pages = Test.page(params[:page]).per(3)
+    @tests_pages = Test.page(params[:page]).per(6)
   end
 
   def find_test
-    @test = Test.find(params[:id])
+    @test = if params[:id]
+              Test.find(params[:id])
+            else
+              Test.find(params[:test_id])
+    end
   end
 
   def test_params
