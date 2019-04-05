@@ -2,7 +2,7 @@
   
   <% if @test.errors.any? %>
     <% @test.errors.full_messages.each do |msg| %>
-      <div class="flash alert"><%= msg %></div>
+      <div class="alert alert-danger"><%= msg %></div>
     <% end %>
   <% end %> 
 

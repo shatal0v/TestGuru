@@ -1,3 +1,5 @@
+<%= render 'devise/shared/error_messages', resource: @test %>
+
 <div class="container">
   <div class="row">
     <div class="mt-2 mb-5">
@@ -5,6 +7,7 @@
       <%= link_to t('.new_test'), new_admin_test_path %><br>
       <%= link_to 'Gists', admin_gists_index_path %>
     </div>
+
 
     <table class="table table-bordered">
       <th class="sort-by-title pointer">
@@ -16,15 +19,21 @@
       <% @tests_pages.each do |test| %>
 
         <tr>
-          <td>
-              <h4><%= link_to test.title, admin_test_path(test) %></h4>
+          <td class="align-middle">
+              <h4 class="test_title" data-test-id="<%= test.id %>">
+                <%=  link_to test.title, admin_test_path(test) %>
+              </h4>
+              <%= render 'form_inline', test: test == @test ? @test : test %>
           </td>
           
-          <td class="col-1">
-            <%= button_to t('.edit'), edit_admin_test_path(test), class: "btn btn-secondary"%>
+          <td class="align-middle col-1">
+            <%= link_to t('.edit'),
+                              edit_admin_test_path(test),
+                              data: { test_id: test.id },
+                              class: "btn btn-secondary form-inline-link"%>
           </td>
           
-          <td class="col-1">
+          <td class="align-middle col-1">
             <%= button_to t('.delete'), admin_test_path(test),
                                         method: :delete,
                                         data: { confirm: 'Are you sure?' },

@@ -46,6 +46,8 @@ en:
         edit: "Edit"
       new:
         new_test: "New test"
+      form_inline:
+        submit: "OK"
   devise:
     sessions:
       create:
