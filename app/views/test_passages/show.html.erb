@@ -7,7 +7,8 @@
       <%=t('.question')%> <%= @test_passage.current_question_number %> <%=t('.of')%> 
       <%= @test_passage.test.questions.count %>
       <div class="progress">
-        <div class="progress-bar" data-one-question-percentage="<%= (1.0 / @test_passage.test.questions.count * 100).to_i %>">
+        <div class="progress-bar"
+          style="width: <%= ((@test_passage.current_question_number - 1).to_f / @test_passage.test.questions.count * 100).to_i %>%">
         </div>
       </div>
     </div>
