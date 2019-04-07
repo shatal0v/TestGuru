@@ -26,6 +26,4 @@ function checkConfirmation() {
 		check.classList.add('hide')
 		x.classList.remove('hide')
 	}
-
-	console.log(confirmation.value == password.value)
 }

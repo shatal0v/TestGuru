@@ -1,32 +1,39 @@
 <div class="container">
   <div class="row">
-      <div class="col-12 mb-5">
-        <h1><%= t('.passing') %> <%= @test_passage.test.title %></h1>
-        <%=t('.question')%> <%= @test_passage.current_question_number %> <%=t('.of')%> 
-        <%= @test_passage.test.questions.count %>
-      </div>
 
-      
-      <div class="col-12 card border-primary mb-5">
-        <div class="mt-2 mb-2">
-          <h4><%= @test_passage.current_question.body %></h4>
+
+    <div class="col-12 mb-5">
+      <h1><%= t('.passing') %> <%= @test_passage.test.title %></h1>
+      <%=t('.question')%> <%= @test_passage.current_question_number %> <%=t('.of')%> 
+      <%= @test_passage.test.questions.count %>
+      <div class="progress">
+        <div class="progress-bar"
+          style="width: <%= ((@test_passage.current_question_number - 1).to_f / @test_passage.test.questions.count * 100).to_i %>%">
         </div>
       </div>
+    </div>
 
-        <%= form_with url: test_passage_path(@test_passage),
-                      local: true, method: :put do |form| %>
-          <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers,
-                                          :id, :body, include_hidden: false do |b| %>
+      
+    <div class="col-12 card border-primary mb-5">
+      <div class="mt-2 mb-2">
+        <h4><%= @test_passage.current_question.body %></h4>
+      </div>
+    </div>
+
+      <%= form_with url: test_passage_path(@test_passage),
+                    local: true, method: :put do |form| %>
+        <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers,
+                                        :id, :body, include_hidden: false do |b| %>
               
-            <div class="custom-control custom-checkbox">
-                <%= b.check_box id: "answer_ids_#{b.object.id}", class: "custom-control-input" %>
-                <%= b.label id: "answer_ids_#{b.object.id}", class: "custom-control-label" %>
-            </div>
+          <div class="custom-control custom-checkbox">
+              <%= b.check_box id: "answer_ids_#{b.object.id}", class: "custom-control-input" %>
+              <%= b.label id: "answer_ids_#{b.object.id}", class: "custom-control-label" %>
+          </div>
 
-          <% end %>
+        <% end %>
 
-        <p><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post %></p>
-        <%= form.submit t('.next'), class: "btn btn-primary mt-4" %>
+      <p><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post %></p>
+      <%= form.submit t('.next'), class: "btn btn-primary mt-4" %>
 
       <% end %>
   </div>
