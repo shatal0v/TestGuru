@@ -5,7 +5,7 @@ class Test < ApplicationRecord
   has_many :questions
   has_many :test_passages
   has_many :users, through: :test_passages
-  belongs_to :author, class_name: 'User', foreign_key: :user_id, optional: true
+  belongs_to :users, optional: true
 
   validates :title, presence: true
   validates_uniqueness_of :title, scope: :level
