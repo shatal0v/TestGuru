@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   root 'tests#index'
+  get 'mails/feedback'
+  post 'mails/sent'
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
