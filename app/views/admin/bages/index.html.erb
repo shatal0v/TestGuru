@@ -1,0 +1,17 @@
+<% @bages.each do |bage| %>
+  <nav class="mt-2">
+    <img src="<%= bage.image_url %>" style="width:100px;height:100px;"></th>
+    <b><%= bage.name %></b>
+  
+    <nav class="mt-2">
+      <%= button_to "Edit", edit_admin_bage_path(bage), class: "btn btn-primary" %>
+    </nav>
+    
+    <nav class="mt-2">
+      <%= button_to "Delete", admin_bage_path(bage),
+                                          method: :delete,
+                                          data: { confirm: 'Are you sure?' },
+                                          class: "btn btn-danger" %>
+    </nav>
+  </nav>
+<% end %>

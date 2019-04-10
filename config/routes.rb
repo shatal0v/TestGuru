@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'bages/show'
+
+  get 'bages/index'
   root 'tests#index'
   get 'mails/feedback'
   post 'mails/sent'
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'gists/index'
+
+    resources :bages, shallow: true
     resources :tests do
       patch :update_inline, on: :member
 

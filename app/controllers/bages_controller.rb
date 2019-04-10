@@ -1,5 +1,6 @@
 class BagesController < ApplicationController
-  def show
-    @bages = current_user.bages
+  def index
+    @bages = Bage.all
+    @user_bages = current_user.bages
   end
 end
