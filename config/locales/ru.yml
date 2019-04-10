@@ -282,6 +282,8 @@ ru:
         edit: "Изменить"
       new:
         new_test: "Новый тест"
+      destroy:
+        delete_test: "был удален"
       form_inline:
         submit: "ОК"
   devise:
