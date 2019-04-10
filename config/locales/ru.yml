@@ -319,6 +319,7 @@ ru:
       question: "Вопрос"
       of: "из"
       next: "Далее"
+      emty_test: "В этом тесте нет ни одного вопроса"
   tests_mailer:
     completed_test:
       subject: "Вы успешно завершили тест на TestGuru!"

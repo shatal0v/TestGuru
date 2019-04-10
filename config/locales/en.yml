@@ -83,6 +83,7 @@ en:
       question: "Question"
       of: "of"
       next: "Next"
+      emty_test: "This test is empty"
   tests_mailer:
     completed_test:
       subject: "You just completed the TestGuru test!"
