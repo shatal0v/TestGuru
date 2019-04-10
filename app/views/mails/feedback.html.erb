@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="mt-4">
+    
+    <%= form_tag 'sent' do %>
+      Subject: </br><%= text_field_tag 'subject', '', class: "form-control" %></br>
+
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea3">Message:</label>
+        <%= text_area_tag 'body', '', class: "form-control", id: "exampleFormControlTextarea3", rows: "7" %>
+    </div>
+
+      <%= submit_tag "submit", value: "Sent", class: 'btn btn-primary' %></br>
+    <% end %>
+
+  </div>
+</div>

@@ -4,6 +4,7 @@ class TestPassagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update result gist]
   helper_method :client_last_response
+  rescue_from NoMethodError, with: :rescue_with_empty_test
 
   def show; end
 
@@ -41,5 +42,10 @@ class TestPassagesController < ApplicationController
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
+  end
+
+  def rescue_with_empty_test
+    redirect_to root_path
+    flash[:alert] = t('.emty_test')
   end
 end
