@@ -1,17 +1,32 @@
-<% @bages.each do |bage| %>
-  <nav class="mt-2">
-    <img src="<%= bage.image_url %>" style="width:100px;height:100px;"></th>
-    <b><%= bage.name %></b>
-  
-    <nav class="mt-2">
-      <%= button_to "Edit", edit_admin_bage_path(bage), class: "btn btn-primary" %>
-    </nav>
-    
-    <nav class="mt-2">
-      <%= button_to "Delete", admin_bage_path(bage),
-                                          method: :delete,
-                                          data: { confirm: 'Are you sure?' },
-                                          class: "btn btn-danger" %>
-    </nav>
-  </nav>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="mt-2 mb-5">
+
+      <b><%= link_to "Create new bage", new_admin_bage_path %></b>
+      <%= octicon "flame", class: "text-danger" %>
+      <table class="mt-3">
+        <th colspan="2">Bages</th>
+        <th colspan="2">Action</th>
+        <% @bages.each do |bage| %>
+          <tr>
+            <td>
+              <div class="mb-3 mt-3"><img src="<%= bage.image_url %>" style="width:100px;height:100px;"></div>
+          </td>
+          <td>
+            <b><%= bage.name %></b>
+          </td>
+          <td>
+            <%= link_to "Edit", edit_admin_bage_path(bage), class: "btn btn-primary" %>
+          </td>
+          <td>
+            <%= button_to "Delete", admin_bage_path(bage),
+                                                  method: :delete,
+                                                  data: { confirm: 'Are you sure?' },
+                                                  class: "btn btn-danger" %>      
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

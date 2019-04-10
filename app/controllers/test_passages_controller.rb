@@ -4,7 +4,7 @@ class TestPassagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update result gist]
   helper_method :client_last_response
-  rescue_from NoMethodError, with: :rescue_with_empty_test
+  #rescue_from NoMethodError, with: :rescue_with_empty_test
 
   def show; end
 
@@ -12,10 +12,13 @@ class TestPassagesController < ApplicationController
 
   def update
     @test_passage.accept!(params[:answer_ids])
+    @bages_names = []
 
     if @test_passage.completed?
+      @bages_names = achived_bages(@test_passage)
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
+      flash[:notice] = "Вы получили награды: #{@bages_names.join(', ')}" unless @bages_names.empty?
     else
       render :show
     end
@@ -44,8 +47,51 @@ class TestPassagesController < ApplicationController
     @test_passage = TestPassage.find(params[:id])
   end
 
+  def achived_bages(test_passage)
+    @test_passage = test_passage
+    bages_names = []
+    bages = Bage.all
+    
+    bages.each do |bage|
+      if self.send(bage.rule.to_sym, @test_passage)
+        @test_passage.user.bages.push(bage)
+        bages_names.push(bage.name)
+      end
+    end
+    bages_names
+  end
+
   def rescue_with_empty_test
     redirect_to root_path
     flash[:alert] = t('.emty_test')
+  end
+
+  def first_test_bage(test_passage)
+    test_passage.user.tests.count == 1
+  end
+
+  def all_right_bage(test_passage)
+    test_passage.percent == 100
+  end
+
+  def backend_bage(test_passage)
+    completed = test_passage.user.tests.where(category_id: 1).order(id: :asc)
+    all_tests_with_category = Test.where(category_id: 1).order(id: :asc)
+
+    completed == all_tests_with_category
+  end
+
+  def embedded_bage(test_passage)
+    completed = test_passage.user.tests.where(category_id: 2).order(id: :asc)
+    all_tests_with_category = Test.where(category_id: 2).order(id: :asc)
+
+    completed == all_tests_with_category
+  end
+
+  def level_1_bage(test_passage)
+    completed = test_passage.user.tests.where(level: 1).order(id: :asc)
+    all_tests_with_level = Test.where(level: 1).order(id: :asc)
+
+    completed == all_tests_with_level
   end
 end

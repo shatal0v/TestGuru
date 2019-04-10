@@ -44,8 +44,7 @@ class Admin::TestsController < Admin::BaseController
 
   def destroy
     @test.destroy
-    redirect_to admin_tests_path
-    flash[:notice] = "#{@test.title} #{t('.delete_test')}"
+    redirect_to admin_tests_path, notice: "#{@test.title} #{t('.delete_test')}"
   end
 
   def start

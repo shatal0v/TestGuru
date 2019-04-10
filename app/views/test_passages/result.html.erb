@@ -2,10 +2,10 @@
 
 <% if @test_passage.test_passed? %>
   <h2><%= t('.pass') %></h2>
-  <h1 class="green"><%= @test_passage.percent %>%</h1>
+  <h1 class="text-success"><%= @test_passage.percent %>%</h1>
 <% else %>
   <h2><%= t('.fail') %></h2>
-  <h1 class="red"><%= @test_passage.percent %>%</h1>
+  <h1 class="text-danger"><%= @test_passage.percent %>%</h1>
 <% end %>
 
 <p><%= link_to t('.main_menu'), tests_path %></p>
