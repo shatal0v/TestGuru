@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'bages/show'
   root 'tests#index'
   get 'mails/feedback'
   post 'mails/sent'

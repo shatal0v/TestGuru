@@ -10,6 +10,7 @@
   <span class="navbar-text">
     <% if user_signed_in? %>
         <b><%= t('.welcome') %>, <%= current_user.email %>!</b> | 
+        <%= link_to t('.my_bages'), bages_show_path %> | 
         <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to t('.registration'), new_user_registration_path %> | 

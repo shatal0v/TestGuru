@@ -296,6 +296,7 @@ ru:
       logout: "Выйти"
       login: "Войти"
       welcome: "Добро пожаловать"
+      my_bages: "Награды"
   helpers:
     submit:
       test:
