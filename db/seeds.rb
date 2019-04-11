@@ -38,9 +38,9 @@ answers = Answer.create(
 )
 
 bages = Bage.create(
-  [{ name: 'Complete First Test', image_url: 'https://cdn.pixabay.com/photo/2017/05/15/23/48/survey-2316468_960_720.png', rule: 'first_test_bage' },
-   { name: 'Backend Master', image_url: 'https://cdn.pixabay.com/photo/2017/03/08/14/20/flat-2126880_960_720.png', rule: 'backend_bage' },
-   { name: '100% Correct', image_url: 'https://cdn.pixabay.com/photo/2016/10/10/01/49/hook-1727484_960_720.png', rule: 'all_right_bage' },
-   { name: 'Embedded Master', image_url: 'https://cdn.pixabay.com/photo/2017/02/27/18/23/cpu-2103856_960_720.png', rule: 'embedded_bage' },
-   { name: 'Beginner', image_url: 'https://cdn.pixabay.com/photo/2016/10/02/19/50/brain-1710293_960_720.png', rule: 'level_1_bage' }]
+  [{ name: 'Complete First Test', image_url: 'https://pp.userapi.com/c855028/v855028227/1f317/VZcL6zKwMAg.jpg', rule: 'first_test_bage' },
+   { name: 'Backend Master', image_url: 'https://pp.userapi.com/c855028/v855028227/1f2f7/36JVYp6Sju4.jpg', rule: 'backend_bage' },
+   { name: '100% Correct', image_url: 'https://pp.userapi.com/c855028/v855028227/1f307/2aIB9_cmXyw.jpg', rule: 'all_right_bage' },
+   { name: 'Embedded Master', image_url: 'https://pp.userapi.com/c855028/v855028227/1f30f/HmY5tO1u-uk.jpg', rule: 'embedded_bage' },
+   { name: 'Beginner', image_url: 'https://pp.userapi.com/c855028/v855028227/1f2ff/vXCAmJ56kwk.jpg', rule: 'level_1_bage' }]
   )
