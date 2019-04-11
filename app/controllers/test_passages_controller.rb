@@ -12,13 +12,12 @@ class TestPassagesController < ApplicationController
 
   def update
     @test_passage.accept!(params[:answer_ids])
-    @bages_names = []
 
     if @test_passage.completed?
-      @bages_names = achived_bages(@test_passage)
+      @bages = achived_bages(@test_passage)
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
-      flash[:notice] = "Вы получили награды: #{@bages_names.join(', ')}" unless @bages_names.empty?
+      flash[:notice] = "Вы получили награду!" unless @bages.empty?
     else
       render :show
     end
@@ -49,16 +48,13 @@ class TestPassagesController < ApplicationController
 
   def achived_bages(test_passage)
     @test_passage = test_passage
-    bages_names = []
     bages = Bage.all
     
     bages.each do |bage|
       if self.send(bage.rule.to_sym, @test_passage)
         @test_passage.user.bages.push(bage)
-        bages_names.push(bage.name)
       end
     end
-    bages_names
   end
 
   def rescue_with_empty_test

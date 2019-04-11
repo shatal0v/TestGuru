@@ -36,3 +36,11 @@ answers = Answer.create(
    { body: 'Answer 1q5', question_id: questions[4].id, correct: false },
    { body: 'Answer 2q5', question_id: questions[4].id, correct: true }]
 )
+
+bages = Bage.create(
+  [{ name: 'Complete First Test', image_url: 'https://cdn.pixabay.com/photo/2017/05/15/23/48/survey-2316468_960_720.png', rule: 'first_test_bage' },
+   { name: 'Backend Master', image_url: 'https://cdn.pixabay.com/photo/2017/03/08/14/20/flat-2126880_960_720.png', rule: 'backend_bage' },
+   { name: '100% Correct', image_url: 'https://cdn.pixabay.com/photo/2016/10/10/01/49/hook-1727484_960_720.png', rule: 'all_right_bage' },
+   { name: 'Embedded Master', image_url: 'https://cdn.pixabay.com/photo/2017/02/27/18/23/cpu-2103856_960_720.png', rule: 'embedded_bage' },
+   { name: 'Beginner', image_url: 'https://cdn.pixabay.com/photo/2016/10/02/19/50/brain-1710293_960_720.png', rule: 'level_1_bage' }]
+  )
