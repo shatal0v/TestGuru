@@ -12,8 +12,7 @@ tests = Test.create(
    { title: 'Golang', level: 2, category_id: categories[1].id, user_id: users[1].id },
    { title: 'Ruby', level: 1, category_id: categories[1].id, user_id: users[1].id },
    { title: 'Python', level: 2, category_id: categories[1].id, user_id: users[1].id },
-   { title: 'STM32', level: 3, category_id: categories[0].id, user_id: users[0].id },
-   { title: 'STM32', level: 2, category_id: categories[0].id, user_id: users[0].id }]
+   { title: 'STM32', level: 3, category_id: categories[0].id, user_id: users[0].id }]
 )
 
 questions = Question.create(
@@ -38,7 +37,7 @@ answers = Answer.create(
 )
 
 bages = Bage.create(
-  [{ name: 'Complete First Test', image_url: 'https://pp.userapi.com/c855028/v855028227/1f317/VZcL6zKwMAg.jpg', rule: 'first_test_bage' },
+  [{ name: 'Start First Test', image_url: 'https://pp.userapi.com/c855028/v855028227/1f317/VZcL6zKwMAg.jpg', rule: 'first_test_bage' },
    { name: 'Backend Master', image_url: 'https://pp.userapi.com/c855028/v855028227/1f2f7/36JVYp6Sju4.jpg', rule: 'backend_bage' },
    { name: '100% Correct', image_url: 'https://pp.userapi.com/c855028/v855028227/1f307/2aIB9_cmXyw.jpg', rule: 'all_right_bage' },
    { name: 'Embedded Master', image_url: 'https://pp.userapi.com/c855028/v855028227/1f30f/HmY5tO1u-uk.jpg', rule: 'embedded_bage' },

@@ -1,10 +1,1 @@
-<% @bages.each do |bage| %>
-  <nav class="mt-2">
-    <% if @user_bages.include?(bage) %>
-      <img src="<%= bage.image_url %>" style="width:100px;height:100px;">
-    <% else %>
-      <img src="<%= asset_path( 'hide_bage.png' ) %>" style="width:100px;height:100px;">
-    <% end %>
-      <b><%= bage.name %></b>
-  </nav>
-<% end  %>
+<%= render @bages %>

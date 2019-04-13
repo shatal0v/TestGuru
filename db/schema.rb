@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_074429) do
   end
 
   create_table "tests", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title", null: false, unique: true
     t.integer "level", default: 0
     t.integer "category_id"
     t.datetime "created_at", null: false
