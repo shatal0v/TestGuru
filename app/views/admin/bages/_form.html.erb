@@ -1,0 +1,27 @@
+<%= form_with model: [:admin, @bage], local: true do |form| %>
+  
+  <% if @bage.errors.any? %>
+    <% @bage.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger"><%= msg %></div>
+    <% end %>
+  <% end %> 
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name, id: :bage_name %>
+  </p>
+
+  <p>
+    <%= form.label :image_url %><br>
+    <%= form.text_field :image_url, id: :bage_image_url %>
+  </p>
+
+  <p>
+    <%= form.label :rule %><br>
+    <%= form.select :rule, %w[first_test_bage backend_bage all_right_bage embedded_bage level_1_bage], prompt: true %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

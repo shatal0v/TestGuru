@@ -282,6 +282,8 @@ ru:
         edit: "Изменить"
       new:
         new_test: "Новый тест"
+      destroy:
+        delete_test: "был удален"
       form_inline:
         submit: "ОК"
   devise:
@@ -294,6 +296,7 @@ ru:
       logout: "Выйти"
       login: "Войти"
       welcome: "Добро пожаловать"
+      my_bages: "Награды"
   helpers:
     submit:
       test:

@@ -6,6 +6,8 @@ class TestPassagesController < ApplicationController
   helper_method :client_last_response
   rescue_from NoMethodError, with: :rescue_with_empty_test
 
+  attr_reader :client_last_response
+  
   def show; end
 
   def result; end
@@ -14,8 +16,11 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?
+      bages_service = BageService.new(@test_passage)
+      achived_bages = bages_service.achived_bages
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
+      flash[:notice] = "Вы получили награду!" if achived_bages
     else
       render :show
     end
@@ -35,8 +40,6 @@ class TestPassagesController < ApplicationController
 
     redirect_to @test_passage, flash_options
   end
-
-  attr_reader :client_last_response
 
   private
 

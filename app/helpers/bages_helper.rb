@@ -1,0 +1,2 @@
+module BagesHelper
+end

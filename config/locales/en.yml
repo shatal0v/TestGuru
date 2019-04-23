@@ -46,6 +46,8 @@ en:
         edit: "Edit"
       new:
         new_test: "New test"
+      destroy:
+        delete_test: "was deleted"
       form_inline:
         submit: "OK"
   devise:
@@ -58,6 +60,7 @@ en:
       logout: "Logout"
       login: "Login"
       welcome: "Welcome"
+      my_bages: "Bages"
   helpers:
     submit:
       test:
