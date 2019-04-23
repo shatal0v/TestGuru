@@ -18,7 +18,7 @@ class BageService
   private
 
   def first_test_bage
-    @first_test_bage ||= first_test?
+    @test_passage.user.tests.count == 1
   end
 
   def all_right_bage
@@ -34,20 +34,17 @@ class BageService
   end
 
   def level_1_bage
-    completed = @test_passage.user.tests.where(level: 1).order(id: :asc)
+    tests_by_level = 
+    started_tests = @test_passage.user.tests.where(level: 1).order(id: :asc) 
     all_tests_with_level = Test.where(level: 1).order(id: :asc)
 
-    completed == all_tests_with_level
+    started_tests == all_tests_with_level
   end
 
   def category_bage(category)
-    completed = @test_passage.user.tests.by_category(category).pluck(:title).uniq.sort
+    started_tests = @test_passage.user.tests.by_category(category).pluck(:title).uniq.sort
     all_tests_with_category =  Test.by_category(category).pluck(:title).sort
 
-    completed == all_tests_with_category
-  end
-
-  def first_test?
-    @test_passage.user.tests.count >= 1
+    started_tests == all_tests_with_category
   end
 end

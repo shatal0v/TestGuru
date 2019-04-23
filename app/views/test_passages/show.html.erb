@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
 
-
     <div class="col-12 mb-5">
       <h1><%= t('.passing') %> <%= @test_passage.test.title %></h1>
+
       <%=t('.question')%> <%= @test_passage.current_question_number %> <%=t('.of')%> 
       <%= @test_passage.test.questions.count %>
       <div class="progress">
@@ -11,11 +11,11 @@
           style="width: <%= ((@test_passage.current_question_number - 1).to_f / @test_passage.test.questions.count * 100).to_i %>%">
         </div>
       </div>
+          <h3 class="mt-2 timer"><%= @test_passage.test.timer %></h3>
     </div>
-
       
     <div class="col-12 card border-primary mb-5">
-      <div class="mt-2 mb-2">
+      <div class="mt-2">
         <h4><%= @test_passage.current_question.body %></h4>
       </div>
     </div>

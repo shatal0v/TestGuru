@@ -8,11 +8,11 @@ users = User.create(
 )
 
 tests = Test.create(
-  [{ title: 'C/C++', level: 3, category_id: categories[0].id, user_id: users[0].id },
-   { title: 'Golang', level: 2, category_id: categories[1].id, user_id: users[1].id },
-   { title: 'Ruby', level: 1, category_id: categories[1].id, user_id: users[1].id },
-   { title: 'Python', level: 2, category_id: categories[1].id, user_id: users[1].id },
-   { title: 'STM32', level: 3, category_id: categories[0].id, user_id: users[0].id }]
+  [{ title: 'C/C++', level: 3, category_id: categories[0].id, user_id: users[0].id, timer: 6 },
+   { title: 'Golang', level: 2, category_id: categories[1].id, user_id: users[1].id, timer: 7 },
+   { title: 'Ruby', level: 1, category_id: categories[1].id, user_id: users[1].id, timer: 5 },
+   { title: 'Python', level: 2, category_id: categories[1].id, user_id: users[1].id, timer: 10 },
+   { title: 'STM32', level: 3, category_id: categories[0].id, user_id: users[0].id, timer: 15 }]
 )
 
 questions = Question.create(
